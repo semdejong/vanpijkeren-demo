@@ -76,8 +76,7 @@ export default function WoningbouwPage() {
             <p>
               In Emmelhage in Emmeloord en in het buitengebied van Ommen maakten wij het plan samen met de
               opdrachtgever. In Swifterbant bouwden wij een villa naar ontwerp van Fokkema en Partners uit Delft. In
-              Dalfsen een 2-onder-1-kap in jaren-30-stijl, ontwerp aangeleverd door de opdrachtgever. Dalfsen is daar
-              de bouwplaats, niet onze vestiging. Die blijft Brink 31 in Ommen.
+              Dalfsen een 2-onder-1-kap in jaren-30-stijl, ontwerp aangeleverd door de opdrachtgever.
             </p>
             <p>Afspraak is afspraak. U spreekt met de persoon die beslist.</p>
             <BelEnPlan />

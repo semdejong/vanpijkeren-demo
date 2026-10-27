@@ -35,7 +35,7 @@ const FAQ = [
   {
     vraag: "Wat als ik nog geen kavel heb?",
     antwoord:
-      "U kunt het bouwplan toch bespreken. Zet in het formulier dat u nog geen kavel hebt. Hoe wij u daarna helpen bij het vinden van een kavel: [door klant te bevestigen].",
+      "U kunt het bouwplan toch bespreken. Zet in het formulier dat u nog geen kavel hebt. Dan kijken we samen wat er mogelijk is.",
   },
   {
     vraag: "Bouwen jullie ook buiten Ommen?",

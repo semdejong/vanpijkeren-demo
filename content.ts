@@ -23,8 +23,8 @@ export const content = {
   },
 
   placeholders: {
-    bereikbaarheid: "[door klant aan te vullen]",
-    parkeren: "[door klant aan te vullen]",
+    bereikbaarheid: "Bel 0529 – 45 27 75 of mail voor een afspraak",
+    parkeren: "Stemmen we af bij het maken van de afspraak",
   },
 
   colors: {

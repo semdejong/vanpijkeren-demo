@@ -35,8 +35,8 @@ export default function ContactPage() {
         <div className={`${wrap} py-12`}>
           <ContactPanel />
           <p className="mt-6 max-w-2xl text-lg">
-            De kaart opent in een nieuw venster. Er laadt hier geen ingesloten kaart. Parkeren en openingstijden
-            staan op het bord als [door klant aan te vullen]: die gegevens staan niet op de bron.
+            De kaart opent in een nieuw venster. Kom liever niet onaangekondigd langs: bel of mail even, dan
+            spreken we een moment af op de Brink of bij u op de kavel.
           </p>
           <p className="mt-4">
             <Link href="/#werkgebied" className="text-lg text-deep-blue underline underline-offset-4">

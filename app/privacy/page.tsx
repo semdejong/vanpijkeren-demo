@@ -52,8 +52,8 @@ export default function PrivacyPage() {
           </p>
           <h2 className="pt-4 text-3xl">Bewaartermijn</h2>
           <p>
-            Hoe de onderneming gegevens bewaart en hoe u inzage vraagt in de echte bedrijfsvoering: [door klant te
-            bevestigen].
+            Wilt u weten welke gegevens Van Pijkeren Bouw van u heeft, of wilt u ze laten verwijderen? Mail naar
+            info@vanpijkerenbouw.nl of bel 0529 – 45 27 75.
           </p>
           <p>
             Vragen over deze tekst:{" "}

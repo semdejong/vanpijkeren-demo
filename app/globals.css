@@ -636,3 +636,18 @@ footer :focus-visible,
     transition: none !important;
   }
 }
+
+/* Projectkaarten: rijen gestapeld, zodat lange ontwerpersnamen binnen het bord blijven */
+.bouwbord-card .bb-row {
+  grid-template-columns: 1fr;
+}
+.bouwbord-card .bb-label {
+  border-right: 0;
+  padding-bottom: 0.1rem;
+  font-size: 0.75rem;
+}
+.bouwbord-card .bb-value {
+  padding-top: 0.15rem;
+  font-size: 1.2rem;
+  overflow-wrap: break-word;
+}

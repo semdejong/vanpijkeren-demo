@@ -27,7 +27,7 @@ export default function ContactPanel() {
             ),
           },
           { label: "Parkeren", value: placeholders.parkeren },
-          { label: "Bereikbaarheid / openingstijden", value: placeholders.bereikbaarheid },
+          { label: "Langskomen", value: placeholders.bereikbaarheid },
         ]}
       />
       <Bouwbord

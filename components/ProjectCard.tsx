@@ -21,6 +21,7 @@ export default function ProjectCard({ project }: { project: ProjectView }) {
         ) : null}
         <div className="p-3 sm:p-4">
           <Bouwbord
+            className="bouwbord-card"
             meta={project.categorieLabel}
             rows={[
               { label: "Werk", value: project.titel },
