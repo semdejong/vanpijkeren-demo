@@ -85,6 +85,9 @@ export default function SiteHeader() {
           </button>
         </div>
       </div>
+      <div className="flex justify-end border-t border-ink/15 px-3 xl:hidden [&>a]:min-h-8 [&>a]:border-0 [&>a]:bg-transparent [&>a]:py-0.5">
+        <SleadsBadge />
+      </div>
       <nav aria-label="Hoofdmenu" className="hidden border-t border-ink/15 xl:block">
         <ul className="mx-auto flex w-full max-w-[76rem] items-center gap-1 px-5">
           {nav.map((item) => (
