@@ -385,6 +385,170 @@ footer :focus-visible,
   background: #fff;
 }
 
+.blad {
+  position: relative;
+}
+
+.mark {
+  position: absolute;
+  width: 0.85rem;
+  height: 0.85rem;
+  pointer-events: none;
+}
+
+.mark-tl { top: 0.35rem; left: 0.35rem; border-top: 1px solid var(--ink); border-left: 1px solid var(--ink); }
+.mark-tr { top: 0.35rem; right: 0.35rem; border-top: 1px solid var(--ink); border-right: 1px solid var(--ink); }
+.mark-bl { bottom: 0.35rem; left: 0.35rem; border-bottom: 1px solid var(--ink); border-left: 1px solid var(--ink); }
+.mark-br { bottom: 0.35rem; right: 0.35rem; border-bottom: 1px solid var(--ink); border-right: 1px solid var(--ink); }
+
+.stempel {
+  display: grid;
+  width: 6.75rem;
+  flex: none;
+  border: 1px solid rgba(22, 25, 27, 0.55);
+  background: #fff;
+  text-align: center;
+}
+
+.stempel span,
+.stempel strong {
+  display: block;
+  padding: 0.3rem 0.35rem;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.stempel strong {
+  border-bottom: 0;
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  padding: 0.35rem 0.2rem 0.45rem;
+}
+
+.register,
+.fotolog {
+  border: 1px solid rgba(22, 25, 27, 0.45);
+  background: #fff;
+}
+
+.register-head,
+.register-cols,
+.fotolog-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid rgba(22, 25, 27, 0.35);
+  background: var(--concrete);
+  color: var(--deep-blue);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.register ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.register li {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.95rem 0.85rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.register li:last-child {
+  border-bottom: 0;
+}
+
+.register h3 {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+@media (min-width: 760px) {
+  .register li {
+    grid-template-columns: 16rem minmax(0, 1fr);
+    column-gap: 1.5rem;
+    align-items: start;
+  }
+}
+
+.fotolog-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.fotolog-cel {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0.55rem;
+  border-bottom: 1px solid var(--rule);
+  color: inherit;
+  text-decoration: none;
+}
+
+.fotolog-frame {
+  display: block;
+  background: var(--concrete);
+}
+
+.fotolog-plaats {
+  margin-top: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--deep-blue);
+}
+
+.fotolog-titel {
+  margin-top: 0.2rem;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.05;
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+@media (min-width: 640px) {
+  .fotolog-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .fotolog-cel:nth-child(odd) {
+    border-right: 1px solid var(--rule);
+  }
+}
+
+@media (min-width: 1024px) {
+  .fotolog-wide {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .fotolog-wide .fotolog-cel {
+    border-right: 1px solid var(--rule);
+  }
+  .fotolog-wide .fotolog-cel:nth-child(4n) {
+    border-right: 0;
+  }
+}
+
 .field {
   display: flex;
   flex-direction: column;

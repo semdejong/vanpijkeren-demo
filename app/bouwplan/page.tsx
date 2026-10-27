@@ -5,7 +5,9 @@ import PageHeader from "@/components/PageHeader";
 import ProjectCard from "@/components/ProjectCard";
 import { content } from "@/content";
 import { getProject } from "@/lib/projects";
-import { MEENEMEN, REGELEN } from "@/lib/site";
+import Fotolog from "@/components/Fotolog";
+import Register from "@/components/Register";
+import { DAARNA, MEENEMEN, REGELEN } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Bouwplan bespreken",
@@ -63,6 +65,14 @@ export default function BouwplanPage() {
         blad="Blad — Bouwplan"
         title="Een kavel, een idee of alleen een wens? Bespreek uw bouwplan."
         lead="Na uw bericht bellen wij om een kennismaking in te plannen. Een vaste reactietijd noemen wij niet."
+        meta="Kennismaking"
+        rows={[
+          { label: "Werk", value: "Uw bouwplan" },
+          { label: "Start", value: "Kavel, idee of wens" },
+          { label: "Daarna", value: "Wij bellen voor een afspraak" },
+          { label: "Telefoon", value: company.phoneDisplay },
+          { label: "Reactietijd", value: "Niet vastgelegd" },
+        ]}
       />
 
       <section data-section="intro" className="border-b border-ink/15">
@@ -83,6 +93,16 @@ export default function BouwplanPage() {
             <p className="mt-4 text-lg">Naam, telefoon en e-mail zijn verplicht. De rest mag u leeg laten.</p>
           </div>
           <BouwplanForm />
+        </div>
+      </section>
+
+      <section data-section="daarna" className="border-b border-ink/15">
+        <div className={`${wrap} py-14`}>
+          <h2 className="text-[clamp(2rem,4vw,3rem)]">Na uw bericht</h2>
+          <p className="mt-4 max-w-2xl text-lg">Vier stappen, zonder een belofte over hoe snel de telefoon gaat.</p>
+          <div className="mt-8">
+            <Register rows={DAARNA} kicker="Vervolg" meta="Geen vaste termijn" />
+          </div>
         </div>
       </section>
 
@@ -108,6 +128,20 @@ export default function BouwplanPage() {
             {vrijstaand ? <ProjectCard project={vrijstaand} /> : null}
             {kap ? <ProjectCard project={kap} /> : null}
             {geschakeld ? <ProjectCard project={geschakeld} /> : null}
+          </div>
+          <div className="mt-10">
+            <h3 className="text-3xl">Nog vier borden uit het archief</h3>
+            <div className="mt-4">
+              <Fotolog
+                kicker="Ook gebouwd"
+                slugs={[
+                  "nieuwbouw-vrijstaande-woning-emmeloord",
+                  "2-onder-1-kap-ommen-vlierlanden-ommen",
+                  "buiksloterham-amsterdam-noord",
+                  "villa-te-swifterbant",
+                ]}
+              />
+            </div>
           </div>
         </div>
       </section>

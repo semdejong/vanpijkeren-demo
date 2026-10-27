@@ -15,6 +15,14 @@ export default function PrivacyPage() {
         blad="Blad — Privacy"
         title="Privacy"
         lead="Kort en voor deze site. Geen tekst van een gemeente."
+        meta="Privacy"
+        rows={[
+          { label: "Verantwoordelijke", value: company.name },
+          { label: "Vestiging", value: `${company.street}, ${company.city}` },
+          { label: "Formulier", value: "Blijft in uw browser" },
+          { label: "Cookies", value: "Geen marketingcookies" },
+          { label: "Kaart", value: "Alleen een link" },
+        ]}
       />
       <section data-section="privacy" className="border-b border-ink/15">
         <div className="mx-auto w-full max-w-3xl space-y-5 px-5 py-12 text-lg">

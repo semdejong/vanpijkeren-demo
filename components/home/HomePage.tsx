@@ -6,7 +6,8 @@ import ContactPanel from "@/components/ContactPanel";
 import ProjectCard from "@/components/ProjectCard";
 import TapeCounter from "@/components/TapeCounter";
 import { content } from "@/content";
-import { eigenOntwerpCount, getAllProjects, getFeaturedProjects, getProject, ONTWERPERS } from "@/lib/projects";
+import ProjectImage from "@/components/ProjectImage";
+import { eigenOntwerpCount, fotoAlt, getAllProjects, getFeaturedProjects, getProject, ONTWERPERS } from "@/lib/projects";
 import { ONDERHOUD, PRINCIPES, UTILITEIT, VERBOUW, WERKGEBIED, WERKWIJZE } from "@/lib/site";
 
 const wrap = "mx-auto w-full max-w-[76rem] px-5";
@@ -24,9 +25,16 @@ export default function HomePage() {
       <section data-section="hero" className="border-b border-ink/15">
         <div className={`${wrap} grid gap-8 py-10 lg:grid-cols-[minmax(0,1.12fr)_minmax(280px,0.88fr)] lg:py-16`}>
           <div className="lg:col-start-1 lg:row-start-1">
-            <p className="font-mono text-[0.8125rem] font-medium uppercase tracking-[0.16em] text-deep-blue">
-              Blad 01 — Het bouwbord
-            </p>
+            <div className="flex items-start justify-between gap-4">
+              <p className="min-w-0 font-mono text-[0.8125rem] font-medium uppercase tracking-[0.16em] text-deep-blue">
+                Blad 01 — Het bouwbord
+              </p>
+              <div className="stempel" aria-hidden="true">
+                <span>Rev.</span>
+                <strong>1983</strong>
+                <span>Ommen</span>
+              </div>
+            </div>
             <h1 className="mt-4 max-w-[12ch] text-[clamp(3.3rem,7.6vw,6.4rem)]">
               U vraagt, wij bouwen.
             </h1>
@@ -123,7 +131,8 @@ export default function HomePage() {
           </p>
           <h2 className="mt-3 text-[clamp(2.2rem,5vw,3.6rem)]">Op de bouwborden</h2>
           <p className="mt-4 max-w-2xl text-lg">
-            Zes projecten uit het archief. Op elk bord staan plaats, ontwerp en uitvoering.
+            Zes borden uit het archief. U leest ze van boven naar beneden: werk, plaats, ontwerp, uitvoering. Een
+            woning in Ommen, een hal in Staphorst, een villa in Swifterbant, een woonhuis in Amsterdam-Noord.
           </p>
           <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {featured.map((project) => (
@@ -262,20 +271,36 @@ export default function HomePage() {
               </Link>
             </p>
           </div>
-          <figure className="border border-ink/20 bg-white p-2">
-            <Image
-              src="/beeld/2-onder-1-kap-baksteen.jpg"
-              alt="Twee-onder-een-kapwoning in baksteen, gebouwd door Van Pijkeren Bouw Ommen"
-              width={2400}
-              height={1601}
-              unoptimized
-              sizes="(min-width: 1024px) 640px, 100vw"
-              className="h-auto w-full"
-            />
-            <figcaption className="px-1 pt-2 font-mono text-[0.8125rem] uppercase tracking-[0.12em] text-deep-blue">
-              Werkfoto · 2-onder-1-kap
-            </figcaption>
-          </figure>
+          <div className="grid gap-4">
+            {vlierlanden?.afbeeldingen[0] ? (
+              <figure className="border border-ink/20 bg-white p-2">
+                <ProjectImage
+                  src={vlierlanden.afbeeldingen[0].src}
+                  w={vlierlanden.afbeeldingen[0].w}
+                  h={vlierlanden.afbeeldingen[0].h}
+                  alt={fotoAlt(vlierlanden, 0)}
+                  sizes="(min-width: 1024px) 520px, 100vw"
+                />
+                <figcaption className="px-1 pt-2 font-mono text-[0.8125rem] uppercase tracking-[0.12em] text-deep-blue">
+                  Ommen · 2-onder-1-kap · Vlierlanden
+                </figcaption>
+              </figure>
+            ) : null}
+            {mubo?.afbeeldingen[0] ? (
+              <figure className="border border-ink/20 bg-white p-2">
+                <ProjectImage
+                  src={mubo.afbeeldingen[0].src}
+                  w={mubo.afbeeldingen[0].w}
+                  h={mubo.afbeeldingen[0].h}
+                  alt={fotoAlt(mubo, 0)}
+                  sizes="(min-width: 1024px) 520px, 100vw"
+                />
+                <figcaption className="px-1 pt-2 font-mono text-[0.8125rem] uppercase tracking-[0.12em] text-deep-blue">
+                  Staphorst · bedrijfspand · Mubo Metaal
+                </figcaption>
+              </figure>
+            ) : null}
+          </div>
         </div>
       </section>
 
@@ -323,11 +348,12 @@ export default function HomePage() {
               Moderne technieken met traditioneel vakmanschap.
             </p>
             <p className="mt-4 font-display text-3xl font-bold">Afspraak is afspraak.</p>
-            <ul className="mt-6 grid gap-px border border-ink/15 bg-ink/15 sm:grid-cols-2">
-              {PRINCIPES.slice(0, 4).map((item) => (
-                <li key={item.titel} className="bg-paper p-4">
-                  <p className="font-mono text-[0.8125rem] uppercase tracking-[0.12em] text-deep-blue">{item.titel}</p>
-                  <p className="mt-2 text-lg">{item.tekst}</p>
+            <ul className="mt-6 grid border-t border-ink/15 sm:grid-cols-2">
+              {PRINCIPES.map((item) => (
+                <li key={item.titel} className="border-b border-ink/15 py-3 sm:odd:pr-6 sm:even:pl-6">
+                  <Link href="/over-ons#principes" className="inline-flex min-h-11 items-center font-mono text-lg uppercase tracking-[0.08em] text-deep-blue underline-offset-4 hover:underline">
+                    {item.titel}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -362,9 +388,14 @@ export default function HomePage() {
           </p>
           <div className="mt-8 grid gap-x-10 sm:grid-cols-2">
             {WERKGEBIED.map((place) => (
-              <div key={place.plaats} className="grid grid-cols-[1fr_auto] gap-4 border-b border-ink/15 py-3 font-mono text-lg">
-                <span>{place.plaats}</span>
-                <span>{place.km === 0 ? "0 km" : `ca. ${place.km} km`}</span>
+              <div key={place.plaats} className="border-b border-ink/15 py-3">
+                <div className="grid grid-cols-[1fr_auto] gap-4 font-mono text-lg">
+                  <span>{place.plaats}</span>
+                  <span>{place.km === 0 ? "0 km" : `ca. ${place.km} km`}</span>
+                </div>
+                <Link href={`/projecten/${place.slug}`} className="mt-1 inline-flex min-h-11 items-center text-lg text-deep-blue underline underline-offset-4">
+                  {place.werk}
+                </Link>
               </div>
             ))}
           </div>

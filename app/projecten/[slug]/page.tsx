@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import BelEnPlan from "@/components/BelEnPlan";
 import Bouwbord from "@/components/Bouwbord";
+import ProjectCard from "@/components/ProjectCard";
 import ProjectImage from "@/components/ProjectImage";
 import { energieVan, excerpt, fotoAlt, getAllProjects, getProject, relatedProjects } from "@/lib/projects";
 
@@ -51,6 +53,10 @@ async function ProjectBody({ params }: { params: Params }) {
               {project.categorieLabel}
             </p>
             <h1 className="mt-3 max-w-4xl text-[clamp(2.4rem,5vw,4.2rem)]">{project.titel}</h1>
+            <p className="mt-4 max-w-2xl font-mono text-lg text-deep-blue">
+              {project.afbeeldingen.length} {project.afbeeldingen.length === 1 ? "foto" : "foto's"} op de eigen maat
+              {project.plaats ? ` · ${project.plaats}` : ""}
+            </p>
           </div>
         </header>
         <div className="mx-auto grid w-full max-w-[76rem] gap-10 px-5 py-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start">
@@ -82,6 +88,7 @@ async function ProjectBody({ params }: { params: Params }) {
                 { label: "Plaats", value: project.plaats || "Niet vermeld" },
                 { label: "Ontwerp", value: project.ontwerpLabel },
                 { label: "Uitvoering", value: "Van Pijkeren Bouw Ommen" },
+                { label: "Foto's", value: String(project.afbeeldingen.length) },
                 ...(energie ? [{ label: "Energie", value: energie }] : []),
               ]}
             />
@@ -91,19 +98,25 @@ async function ProjectBody({ params }: { params: Params }) {
           <aside data-section="verwant" className="border-t border-ink/15">
             <div className="mx-auto w-full max-w-[76rem] px-5 py-10">
               <h2 className="text-3xl">Meer in {project.categorieLabel.toLowerCase()}</h2>
-              <ul className="mt-4 border-y border-ink/15">
+              <div className="mt-6 grid gap-6 lg:grid-cols-3">
                 {related.map((item) => (
-                  <li key={item.slug} className="border-b border-ink/15 last:border-b-0">
-                    <Link href={`/projecten/${item.slug}`} className="flex min-h-11 items-center py-3 text-lg text-deep-blue underline underline-offset-4">
-                      {item.titel}
-                      {item.plaats ? ` · ${item.plaats}` : ""}
-                    </Link>
-                  </li>
+                  <ProjectCard key={item.slug} project={item} />
                 ))}
-              </ul>
+              </div>
             </div>
           </aside>
         ) : null}
+        <section data-section="vervolg" className="border-t border-ink/15">
+          <div className="mx-auto w-full max-w-[76rem] px-5 py-10">
+            <h2 className="text-3xl">Dit soort werk bespreken</h2>
+            <p className="mt-4 max-w-2xl text-lg">
+              Bel, of stuur een bouwplan. Wij bellen terug voor een kennismaking.
+            </p>
+            <div className="mt-6">
+              <BelEnPlan />
+            </div>
+          </div>
+        </section>
       </article>
     </main>
   );

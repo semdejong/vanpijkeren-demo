@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import PageHeader from "@/components/PageHeader";
 import ProjectCard from "@/components/ProjectCard";
 import { countByFilter, FILTERS, filterProjects, getAllProjects, isFilterId } from "@/lib/projects";
+import { FILTER_LEAD } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Projecten",
@@ -19,7 +20,15 @@ export default function ProjectenPage(props: { searchParams: Promise<{ categorie
       <PageHeader
         blad="Blad — Archief"
         title="Projecten"
-        lead={`Alle ${total} projecten uit het archief, met plaats, categorie en ontwerp.`}
+        lead={`Alle ${total} projecten uit het archief, met plaats, categorie en ontwerp. Nieuwste borden eerst.`}
+        meta="Archief"
+        rows={[
+          { label: "Werk", value: "Uitgevoerd werk" },
+          { label: "Aantal", value: String(total) },
+          { label: "Lezen", value: "Werk, plaats, ontwerp" },
+          { label: "Filter", value: "Vijf categorieën" },
+          { label: "Uitvoering", value: "Van Pijkeren Bouw Ommen" },
+        ]}
       />
       <Suspense fallback={<p className={`${wrap} py-10 text-lg`}>Het archief wordt geopend…</p>}>
         <Archive searchParams={props.searchParams} />
@@ -55,7 +64,8 @@ async function Archive({ searchParams }: { searchParams: Promise<{ categorie?: s
             );
           })}
         </nav>
-        <p className="mt-6 font-mono text-lg text-deep-blue">
+        <p className="mt-6 max-w-3xl text-lg">{FILTER_LEAD[active] ?? FILTER_LEAD.alle}</p>
+        <p className="mt-3 font-mono text-lg text-deep-blue">
           {projects.length} {projects.length === 1 ? "project" : "projecten"}
         </p>
         <div className="mt-6 grid gap-6 md:grid-cols-2">

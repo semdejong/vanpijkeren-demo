@@ -245,6 +245,18 @@ export function getProject(slug: string) {
   return bySlug.get(slug);
 }
 
+export function getProjects(slugs: readonly string[]) {
+  return slugs.map((slug) => {
+    const project = bySlug.get(slug);
+    if (!project) throw new Error(`Project ontbreekt: ${slug}`);
+    return project;
+  });
+}
+
+export function countPhotos() {
+  return projects.reduce((sum, project) => sum + project.afbeeldingen.length, 0);
+}
+
 export function getFeaturedProjects() {
   return FEATURED_SLUGS.map((slug) => bySlug.get(slug)!);
 }
