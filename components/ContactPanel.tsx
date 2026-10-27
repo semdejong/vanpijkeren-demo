@@ -30,27 +30,23 @@ export default function ContactPanel() {
           { label: "Bereikbaarheid / openingstijden", value: placeholders.bereikbaarheid },
         ]}
       />
-      <div>
-        <p className="text-lg">
-          {company.legalName}
-          <br />
-          {company.street}, {company.postalCode} {company.city}
-        </p>
-        <p className="mt-4 text-lg">KvK {company.kvk}</p>
-        <p className="mt-4 text-lg">
-          <a
-            href={company.mapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-deep-blue underline underline-offset-4"
-          >
-            Route via Google Maps
-          </a>
-        </p>
-        <p className="mt-4 max-w-md text-lg">
-          Parkeren en bereikbaarheid vullen wij niet zelf in. Die gegevens staan niet op de huidige site.
-        </p>
-      </div>
+      <Bouwbord
+        kicker="Route"
+        meta="0 km"
+        rows={[
+          { label: "Firma", value: company.legalName },
+          { label: "KvK", value: company.kvk },
+          { label: "Vertrek", value: `${company.street}, ${company.city}` },
+          {
+            label: "Kaart",
+            value: (
+              <a href={company.mapsUrl} target="_blank" rel="noopener noreferrer">
+                Google Maps
+              </a>
+            ),
+          },
+        ]}
+      />
     </div>
   );
 }

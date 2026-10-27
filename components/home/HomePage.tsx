@@ -23,45 +23,50 @@ export default function HomePage() {
   return (
     <main>
       <section data-section="hero" className="border-b border-ink/15">
-        <div className={`${wrap} grid gap-8 py-10 lg:grid-cols-[minmax(0,1.12fr)_minmax(280px,0.88fr)] lg:py-16`}>
-          <div className="lg:col-start-1 lg:row-start-1">
-            <div className="flex items-start justify-between gap-4">
-              <p className="min-w-0 font-mono text-[0.8125rem] font-medium uppercase tracking-[0.16em] text-deep-blue">
-                Blad 01 — Het bouwbord
+        <div className={`${wrap} py-10 lg:py-16`}>
+          <div className="grid items-start gap-8 lg:grid-cols-2">
+            <div>
+              <div className="flex items-start justify-between gap-4">
+                <p className="min-w-0 font-mono text-[0.8125rem] font-medium uppercase tracking-[0.16em] text-deep-blue">
+                  Blad 01 — Het bouwbord
+                </p>
+                <div className="stempel" aria-hidden="true">
+                  <span>Rev.</span>
+                  <strong>1983</strong>
+                  <span>Ommen</span>
+                </div>
+              </div>
+              <h1 className="mt-4 max-w-[12ch] text-[clamp(3.3rem,7.6vw,6.4rem)]">
+                U vraagt, wij bouwen.
+              </h1>
+              <p className="mt-5 max-w-xl font-display text-3xl font-bold leading-tight sm:text-4xl">
+                Afspraak is afspraak. Sinds {company.founded}.
               </p>
-              <div className="stempel" aria-hidden="true">
-                <span>Rev.</span>
-                <strong>1983</strong>
-                <span>Ommen</span>
+              <p className="mt-4 max-w-xl text-lg">
+                Allround aannemer voor nieuwbouw, verbouw en onderhoud. Woningbouw en utiliteitsbouw, vanuit Ommen in de
+                regio {company.region}, en op projecten in Almere en Amsterdam.
+              </p>
+              <div className="mt-6">
+                <BelEnPlan />
               </div>
             </div>
-            <h1 className="mt-4 max-w-[12ch] text-[clamp(3.3rem,7.6vw,6.4rem)]">
-              U vraagt, wij bouwen.
-            </h1>
-            <p className="mt-5 max-w-xl font-display text-3xl font-bold leading-tight sm:text-4xl">
-              Afspraak is afspraak. Sinds {company.founded}.
-            </p>
-            <p className="mt-4 max-w-xl text-lg">
-              Allround aannemer voor nieuwbouw, verbouw en onderhoud. Woningbouw en utiliteitsbouw, vanuit Ommen in de
-              regio {company.region}, en op projecten in Almere en Amsterdam.
-            </p>
+            <figure className="border border-ink/20 bg-white p-2">
+              <Image
+                src="/beeld/hero-donkere-woning.jpg"
+                alt="Woning met donkere gevel, gebouwd door Van Pijkeren Bouw Ommen"
+                width={2400}
+                height={1601}
+                unoptimized
+                preload
+                sizes="(min-width: 1024px) 640px, 100vw"
+                className="h-auto w-full"
+              />
+              <figcaption className="px-1 pt-2 font-mono text-[0.8125rem] uppercase tracking-[0.12em] text-deep-blue">
+                Werkfoto · woning
+              </figcaption>
+            </figure>
           </div>
-          <figure className="border border-ink/20 bg-white p-2 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start">
-            <Image
-              src="/beeld/hero-donkere-woning.jpg"
-              alt="Woning met donkere gevel, gebouwd door Van Pijkeren Bouw Ommen"
-              width={2400}
-              height={1601}
-              unoptimized
-              preload
-              sizes="(min-width: 1024px) 640px, 100vw"
-              className="h-auto w-full"
-            />
-            <figcaption className="px-1 pt-2 font-mono text-[0.8125rem] uppercase tracking-[0.12em] text-deep-blue">
-              Werkfoto · woning
-            </figcaption>
-          </figure>
-          <div className="lg:col-start-1 lg:row-start-2">
+          <div className="mt-8">
             <Bouwbord
               animate
               meta="Sinds 1983"
@@ -74,9 +79,6 @@ export default function HomePage() {
                 { label: "Adres", value: `${company.street}, ${company.city}` },
               ]}
             />
-            <div className="mt-6">
-              <BelEnPlan />
-            </div>
           </div>
         </div>
       </section>
@@ -232,6 +234,7 @@ export default function HomePage() {
           </p>
           <h2 className="mt-3 text-[clamp(2.2rem,5vw,3.6rem)]">Hoe een bouw bij ons loopt</h2>
           <p className="mt-4 max-w-2xl text-lg">Van het eerste gesprek tot de oplevering. Wij ontzorgen, en blijven eindverantwoordelijk.</p>
+          <p className="mt-2 font-mono text-sm uppercase tracking-[0.12em] text-deep-blue lg:hidden">Schuif de lijn opzij</p>
           <div className="timeline-scroll mt-8">
             <ol className="timeline">
               {WERKWIJZE.map((step) => (

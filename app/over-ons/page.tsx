@@ -48,9 +48,9 @@ export default function OverOnsPage() {
               spin in het bouw-web: ontwerp, vergunning, calculatie en bouw kunnen bij ons samenkomen.
             </p>
             <p>
-              Bij {eigen} projecten in het archief verzorgden wij zelf het ontwerp. Even vaak bouwen wij het plan van
-              een architect, in bouwteamverband. Het archief telt {total} borden en {fotos} foto's. Dat is het werk,
-              geen slogan.
+              Bij {eigen} projecten in het archief verzorgden wij zelf het ontwerp. Op de andere borden staat een
+              architect, of het archief noemt geen ontwerper. Het archief telt {total} borden en {fotos} foto's. Dat
+              is het werk, geen slogan.
             </p>
             <p>
               Moderne technieken met traditioneel vakmanschap. Uw woning moet uw thuis zijn. Een bedrijfshal krijgt

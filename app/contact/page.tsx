@@ -35,8 +35,8 @@ export default function ContactPage() {
         <div className={`${wrap} py-12`}>
           <ContactPanel />
           <p className="mt-6 max-w-2xl text-lg">
-            De route opent Google Maps in een nieuw venster. Er laadt hier geen kaart. Parkeren en openingstijden
-            vullen wij niet in: die staan niet op de bron.
+            De kaart opent in een nieuw venster. Er laadt hier geen ingesloten kaart. Parkeren en openingstijden
+            staan op het bord als [door klant aan te vullen]: die gegevens staan niet op de bron.
           </p>
           <p className="mt-4">
             <Link href="/#werkgebied" className="text-lg text-deep-blue underline underline-offset-4">
@@ -62,7 +62,7 @@ export default function ContactPage() {
           <Register rows={DAARNA} kicker="Vervolg" meta="Kennismaking" />
         </div>
       </section>
-      <section id="formulier" data-section="formulier-blok" className="border-b border-ink/15">
+      <section data-section="formulier-blok" className="border-b border-ink/15">
         <div className={`${wrap} grid gap-8 py-12 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.1fr)]`}>
           <div>
             <h2 className="text-[clamp(2rem,4vw,3rem)]">Bouwplan bespreken</h2>

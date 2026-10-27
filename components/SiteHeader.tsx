@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import SleadsBadge from "@/components/SleadsBadge";
 import { content } from "@/content";
 
 export default function SiteHeader() {
@@ -10,7 +12,13 @@ export default function SiteHeader() {
   const menuId = useId();
   const openButton = useRef<HTMLButtonElement>(null);
   const closeButton = useRef<HTMLButtonElement>(null);
+  const pathname = usePathname();
   const { company, nav } = content;
+
+  function isCurrent(href: string) {
+    if (href === "/") return pathname === "/";
+    return pathname === href || pathname.startsWith(`${href}/`);
+  }
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -77,15 +85,27 @@ export default function SiteHeader() {
           </button>
         </div>
       </div>
+      <div className="flex border-t border-ink/15 px-5 py-1 xl:hidden">
+        <SleadsBadge />
+      </div>
       <nav aria-label="Hoofdmenu" className="hidden border-t border-ink/15 xl:block">
-        <ul className="mx-auto flex w-full max-w-[76rem] gap-1 px-3">
+        <ul className="mx-auto flex w-full max-w-[76rem] items-center gap-1 px-5">
           {nav.map((item) => (
             <li key={item.href}>
-              <Link href={item.href} className="inline-flex min-h-11 items-center px-3 text-lg text-ink">
+              <Link
+                href={item.href}
+                aria-current={isCurrent(item.href) ? "page" : undefined}
+                className={`inline-flex min-h-11 items-center border-b-2 px-3 text-lg text-ink ${
+                  isCurrent(item.href) ? "border-ink" : "border-transparent"
+                }`}
+              >
                 {item.label}
               </Link>
             </li>
           ))}
+          <li className="ml-auto">
+            <SleadsBadge />
+          </li>
         </ul>
       </nav>
 
@@ -97,8 +117,8 @@ export default function SiteHeader() {
           aria-label="Menu"
           className="fixed inset-0 z-[70] overflow-y-auto bg-paper"
         >
-          <div className="mx-auto flex w-full max-w-[76rem] items-center justify-between px-5 py-4">
-            <p className="font-mono text-[0.8125rem] uppercase tracking-[0.16em] text-deep-blue">Menu</p>
+          <div className="mx-auto flex w-full max-w-[76rem] items-center justify-between gap-4 px-5 py-4">
+            <SleadsBadge />
             <button
               ref={closeButton}
               type="button"
@@ -114,7 +134,10 @@ export default function SiteHeader() {
                 <li key={item.href} className="border-t border-ink/15">
                   <Link
                     href={item.href}
-                    className="block py-4 font-display text-4xl font-extrabold text-ink"
+                    aria-current={isCurrent(item.href) ? "page" : undefined}
+                    className={`block border-l-4 py-4 pl-3 font-display text-4xl font-extrabold text-ink ${
+                      isCurrent(item.href) ? "border-ink" : "border-transparent"
+                    }`}
                     onClick={closeMenu}
                   >
                     {item.label}

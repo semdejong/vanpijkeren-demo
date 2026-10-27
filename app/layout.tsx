@@ -3,7 +3,6 @@ import { Barlow, Barlow_Condensed, IBM_Plex_Mono } from "next/font/google";
 import type { CSSProperties } from "react";
 import "./globals.css";
 import { content } from "@/content";
-import SleadsBadge from "@/components/SleadsBadge";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import MobileBar from "@/components/MobileBar";
@@ -79,7 +78,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Joint />
         <SiteFooter />
         <MobileBar />
-        <SleadsBadge />
       </body>
     </html>
   );

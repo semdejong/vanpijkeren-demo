@@ -185,7 +185,9 @@ footer :focus-visible,
   line-height: 1.05;
   letter-spacing: 0.01em;
   text-transform: uppercase;
-  overflow-wrap: break-word;
+  overflow-wrap: normal;
+  text-wrap: balance;
+  hyphens: manual;
 }
 
 .bb-value a {
@@ -195,12 +197,32 @@ footer :focus-visible,
   text-underline-offset: 0.15em;
 }
 
+.bb-value a[href^="mailto:"] {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
 @media (min-width: 640px) {
   .bb-row {
     grid-template-columns: 11.5rem minmax(0, 1fr);
   }
   .bb-value {
     font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bouwbord-compact .bb-row {
+    grid-template-columns: 1fr;
+  }
+
+  .bouwbord-compact .bb-label {
+    border-right: 0;
+    padding-bottom: 0.15rem;
+  }
+
+  .bouwbord-compact .bb-value {
+    padding-top: 0.15rem;
   }
 }
 
@@ -320,6 +342,7 @@ footer :focus-visible,
 .timeline-scroll {
   overflow-x: auto;
   overscroll-behavior-x: contain;
+  max-width: 100%;
 }
 
 .timeline {
@@ -377,12 +400,11 @@ footer :focus-visible,
 .checksheet li::before {
   content: "";
   position: absolute;
-  left: 0.15rem;
-  top: 1.05rem;
-  width: 0.95rem;
-  height: 0.95rem;
-  border: 1px solid var(--ink);
-  background: #fff;
+  left: 0.2rem;
+  top: 1.2rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--ink);
 }
 
 .blad {
@@ -479,7 +501,14 @@ footer :focus-visible,
   line-height: 1.05;
 }
 
+.register-cols {
+  display: none;
+}
+
 @media (min-width: 760px) {
+  .register-cols {
+    display: flex;
+  }
   .register li {
     grid-template-columns: 16rem minmax(0, 1fr);
     column-gap: 1.5rem;

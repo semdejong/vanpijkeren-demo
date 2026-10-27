@@ -60,7 +60,7 @@ async function ProjectBody({ params }: { params: Params }) {
           </div>
         </header>
         <div className="mx-auto grid w-full max-w-[76rem] gap-10 px-5 py-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start">
-          <div className="min-w-0 space-y-8">
+          <div className="order-2 min-w-0 space-y-8 lg:order-1">
             {project.afbeeldingen.map((image, index) => (
               <figure key={image.src} className="border border-ink/15 bg-concrete">
                 <ProjectImage
@@ -80,8 +80,9 @@ async function ProjectBody({ params }: { params: Params }) {
               <TextBlocks lines={project.alinea} />
             </div>
           </div>
-          <div className="lg:sticky lg:top-28">
+          <div className="order-1 lg:sticky lg:top-36 lg:order-2">
             <Bouwbord
+              className="bouwbord-compact"
               meta={project.categorieLabel}
               rows={[
                 { label: "Werk", value: project.titel },
